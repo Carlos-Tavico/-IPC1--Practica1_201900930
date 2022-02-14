@@ -20,11 +20,17 @@ public class PacMan {
         boolean q = true, ga = true;
         Scanner scan = new Scanner(System.in);
         String mat[][];
-        String hist[][];
+        String hist[][] = new String[4][10];
         String sup, op, nombre, mov;
         int carnet, row, col, puntaje, mult, movimientos, i, j;
+        int  partida = 0;
+        hist[0][0] = "Nombre";
+        hist[1][0] = "Carnet";
+        hist[2][0] = "Puntaje";
+        hist[3][0] = "Movimientos";
         // Menu
         while(q){
+            partida = partida + 1;
             System.out.println("Elija una opcion:\n1. JUGAR\n2. HISTORIAL\n3. SALIR\n");
             op = scan.next();
             if(op.equals("1")){
@@ -156,9 +162,30 @@ public class PacMan {
                     }
                     //Contador
                     movimientos = movimientos + 1;
+                    //Puntaje requerido
+                    if(puntaje >= 100){
+                        ga = false;
+                        System.out.println("Has ganado");
+                    }
+                    else if(puntaje <= 0){
+                        ga = false;
+                        System.out.println("Has perdido");
+                    }
+                    hist[0][partida] = nombre;
+                    hist[1][partida] = String.valueOf(carnet);
+                    hist[2][partida] = String.valueOf(puntaje);
+                    hist[3][partida] = String.valueOf(movimientos);
                 }
                 
             } else if(op.equals("2")){
+                //Historial
+                for(int g = 0; g <= partida; g++){
+                    for(int h = 0; h <= 3; h++){
+                        System.out.print(hist[h][0] + " - ");
+                    }
+                }
+                String pulse = scan.next();
+                ga = false;
                 
             } else if(op.equals("3")){
                 q = false;
