@@ -179,11 +179,13 @@ public class PacMan {
                 
             } else if(op.equals("2")){
                 //Historial
-                for(int g = 0; g <= partida; g++){
+                for(int g = 0; g < partida; g++){
                     for(int h = 0; h <= 3; h++){
-                        System.out.print(hist[h][0] + " - ");
+                        System.out.print(hist[h][g] + "  -  ");
                     }
+                    System.out.println("");
                 }
+                System.out.println("Pulse cualquier tecla para volver");
                 String pulse = scan.next();
                 ga = false;
                 
